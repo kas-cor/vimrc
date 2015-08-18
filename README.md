@@ -1,7 +1,7 @@
 # vimrc
 My gVim for windows
 
-## Instaling
+## Installing
 
 ```bash
 git clone https://github.com/kas-cor/vimrc.git ~/vimfiles
