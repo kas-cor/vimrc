@@ -1,5 +1,5 @@
 # vimrc
-my vim for windows
+My gVim for windows
 
 ## Instaling
 
@@ -9,4 +9,4 @@ cd ~/vimfiles
 install_win.cmd
 ```
 
-Open gVim and run command ```:PlugInstall```
+Open gVim and run command ```:PluginInstall```
