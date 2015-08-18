@@ -1,3 +1,4 @@
 plugins/**/*
 !plugins/Vundle.vim/**/*
 undo
+.netrwhist
