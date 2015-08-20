@@ -158,6 +158,11 @@ set foldcolumn=1
 set foldenable
 set foldmethod=syntax
 
+" Size Window
+" set sessionoptions+="resize,winpos"
+" autocmd VIMEnter * :source ~/vimfiles/tmp/session.vim
+" autocmd VIMLeave * :mksession! ~/vimfiles/tmp/session.vim
+
 " ----------------------------------------------------
 " Colors and Fonts
 " ----------------------------------------------------
@@ -173,6 +178,7 @@ if has("gui_running")
     set guioptions-=l
     set guioptions-=L
     set t_Co=256
+    set lines=999 columns=999
 endif
 
 " Disable scrollbars (real hackers don't use scrollbars for navigation!)
