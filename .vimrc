@@ -10,33 +10,44 @@ filetype off                  " required
 set rtp+=~\vimfiles\plugins\Vundle.vim
 call vundle#begin('~\vimfiles\plugins')
 " let Vundle manage Vundle, required
-
 Plugin 'gmarik/Vundle.vim'
 
+" Visual
 Plugin 'bling/vim-airline'
-Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-Plugin 'majutsushi/tagbar'
+
+" Search
 Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'szw/vim-tags'
+Plugin 'myusuf3/numbers.vim'
+Plugin 'scrooloose/nerdtree'
+
+" Edit
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'msanders/snipmate.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
-Plugin 'rking/ag.vim'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
-" UltiSnips
-" Track the engine.
-" Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-" Plugin 'honza/vim-snippets'
+" NeoComplete
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/context_filetype.vim'
+Plugin 'Shougo/neoinclude.vim'
+Plugin 'Shougo/neco-syntax'
+Plugin 'Shougo/neosnippet-snippets'
+
+" JavaScript
+Plugin 'othree/javascript-libraries-syntax.vim'
 
 " Git
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Colorsheme
 Plugin 'altercation/vim-colors-solarized'
@@ -45,20 +56,111 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " ------
-" Ag
+" Tags
 " ------
-let g:ag_working_path_mode="r"
+let g:vim_tags_auto_generate = 1
+let g:vim_tags_ctags_binary = "~/vimfiles/ctags.exe"
 
 " ------
-" UltiSnips
+" Nerd Tree
 " ------
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:NERDTreeWinPos = "left"
+let NERDTreeIgnore = ['\.pyc$']
+let g:NERDTreeWinSize=35
+let NERDTreeHighlightCursorline=1
+nmap <leader><leader> :NERDTreeToggle<cr>
+nmap <C-\> :NERDTreeFind<CR>
 
-" If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+" ------
+" surround.vim
+" ------
+" Annotate strings with gettext http://amix.dk/blog/post/19678
+vmap Si S(i_<esc>f)
+au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
+
+" ------
+" vim-multiple-cursors
+" ------
+let g:multi_cursor_next_key="\<C-s>"
+
+" ------
+" CTRL-P
+" ------
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_map = '<c-f>'
+map <leader>j :CtrlP<cr>
+map <c-b> :CtrlPBuffer<cr>
+let g:ctrlp_max_height = 20
+let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+
+" ------
+" TagBar
+" ------
+let g:tagbar_ctags_bin = '~/vimfiles/ctags.exe'
+nmap <F8> :TagbarToggle<CR>
+
+" ------
+" Git-gutter
+" ------
+let g:gitgutter_avoid_cmd_prompt_on_windows = 1
+let g:gitgutter_sign_column_always = 1
+
+" ------
+" Emmet
+" ------
+let g:user_emmet_mode='a'
+imap <c-e> <c-y>,
+
+" ------
+" neocomplete
+" ------
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_delimiter = 1
+let g:neocomplete#enable_auto_close_preview = 1
+
+" ------
+" Syntastic
+" ------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" ------
+" AirLine
+" ------
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#ctrlspace#enabled = 1
+let g:airline_theme = "hybridline"
 
 " ----------------------------------------------------
 " General
@@ -72,8 +174,13 @@ set autoread
 " Auto change dir
 set autochdir
 
-" Ctrl-space omni compl
-inoremap <C-space> <C-x><C-o>
+" Tags
+set exrc
+set secure
+
+" Copy/paste Ctrl+C/Ctrl+V
+vmap <C-C> "+yi
+imap <C-V> <esc>"+gPi
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -125,7 +232,7 @@ endif
 " Show numbers
 set number
 
-"Always show current position
+" Always show current position
 set ruler
 
 " Height of the command bar
@@ -163,6 +270,7 @@ set magic
 
 " Show matching brackets when text indicator is over them
 set showmatch
+
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -176,8 +284,8 @@ set tm=500
 set foldcolumn=1
 
 " Folding
-set foldenable
-set foldmethod=syntax
+set nofoldenable
+" set foldmethod=syntax
 
 " Size Window
 " set sessionoptions+="resize,winpos"
@@ -201,8 +309,6 @@ if has("gui_running")
     set t_Co=256
     set lines=999 columns=999
 endif
-
-" Disable scrollbars (real hackers don't use scrollbars for navigation!)
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf-8
@@ -255,9 +361,9 @@ set tabstop=4
 set lbr
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
-set nowrap "Wrap lines
+set ai " Auto indent
+set si " Smart indent
+set nowrap " Wrap lines
 
 " ----------------------------------------------------
 " Moving around, tabs, windows and buffers
@@ -316,7 +422,7 @@ autocmd BufReadPost *
 set viminfo^=%
 
 " Auto format all doc
-map <leader>f gg=G
+map <leader>f gg=G``
 
 " ----------------------------------------------------
 " Status line
@@ -325,9 +431,6 @@ map <leader>f gg=G
 set laststatus=2
 set cmdheight=1
 set noshowmode
-
-" Format the status line
-" set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 " ----------------------------------------------------
 " Editing mappings
@@ -386,6 +489,10 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
+" if executable('ag')
+"   let g:ackprg = 'ag --vimgrep'
+" endif
+
 " ----------------------------------------------------
 " Spell checking
 " ----------------------------------------------------
@@ -412,55 +519,6 @@ map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-" ----------------------------------------------------
-" PLUGINS SETTINGS
-" ----------------------------------------------------
-" vim-airline config (force color)
-let g:airline_theme="molokai"
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-
-" Syntastic
-let g:syntastic_php_checkers=['php']
-let g:syntastic_php_phpcs_exec='c:/php'
-let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
-
-" Nerd Tree
-let g:NERDTreeWinPos = "left"
-let NERDTreeIgnore = ['\.pyc$']
-let g:NERDTreeWinSize=35
-let NERDTreeHighlightCursorline=1
-nmap <leader><leader> :NERDTreeToggle<cr>
-nmap <C-\> :NERDTreeFind<CR>
-
-" surround.vim config
-" Annotate strings with gettext http://amix.dk/blog/post/19678
-" vmap Si S(i_<esc>f)
-" au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
-
-" vim-multiple-cursors
-let g:multi_cursor_next_key="\<C-s>"
-
-" CTRL-P
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_map = '<c-f>'
-map <leader>j :CtrlP<cr>
-map <c-b> :CtrlPBuffer<cr>
-let g:ctrlp_max_height = 20
-let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
-
-" TagBar
-let g:tagbar_ctags_bin = '~/vimfiles/ctags.exe'
-nmap <F8> :TagbarToggle<CR>
-
-" Git-gutter
-let g:gitgutter_avoid_cmd_prompt_on_windows = 1
-let g:gitgutter_sign_column_always = 1
-
-" Emmet
-let g:user_emmet_mode='a'
-imap <c-e> <c-y>,
 
 " ----------------------------------------------------
 " Helper functions
