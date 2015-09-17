@@ -160,7 +160,12 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#ctrlspace#enabled = 1
-let g:airline_theme = "hybridline"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 2
+let g:airline_theme = "molokai"
 
 " ----------------------------------------------------
 " General
@@ -489,9 +494,9 @@ map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
-" if executable('ag')
-"   let g:ackprg = 'ag --vimgrep'
-" endif
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " ----------------------------------------------------
 " Spell checking
