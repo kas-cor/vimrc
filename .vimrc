@@ -24,15 +24,18 @@ Plugin 'majutsushi/tagbar'
 Plugin 'szw/vim-tags'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'kien/tabman.vim'
 
 " Edit
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'msanders/snipmate.vim'
+Plugin 'scrooloose/snipmate-snippets'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'gregsexton/MatchTag'
 
 " NeoComplete
 Plugin 'Shougo/neocomplete.vim'
@@ -51,6 +54,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Colorsheme
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'w0ng/vim-hybrid'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -343,10 +347,12 @@ endif
 " Colorscheme
 if has("gui_running")
     set background=dark
-    colorscheme solarized
+    " colorscheme solarized
+    colorscheme hybrid
 else
     set background=dark
-    let g:colors_name="solarized"
+    " let g:colors_name="solarized"
+    let g:colors_name="hybrid"
 endif
 
 " ----------------------------------------------------
@@ -391,22 +397,6 @@ map <leader>bd :Bclose<cr>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
-
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
