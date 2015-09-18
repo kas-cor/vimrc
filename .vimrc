@@ -144,6 +144,8 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_auto_select = 1
 let g:neocomplete#enable_auto_delimiter = 1
 let g:neocomplete#enable_auto_close_preview = 1
+let g:neocomplete#min_keyword_length = 1
+
 
 " ------
 " Syntastic
@@ -169,7 +171,7 @@ let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 2
-let g:airline_theme = "molokai"
+let g:airline_theme = "hybridline"
 
 " ----------------------------------------------------
 " General
@@ -392,6 +394,10 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Find/Replace
+noremap ;; *``:%s///g<Left><Left>
+noremap ;' *``:%s///cg<Left><Left><Left>
+
 " Close the current buffer
 map <leader>bd :Bclose<cr>
 
@@ -543,34 +549,4 @@ function! VisualSelection(direction, extra_filter) range
 
     let @/ = l:pattern
     let @" = l:saved_reg
-endfunction
-
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
-
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
-
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
-
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
 endfunction
