@@ -169,7 +169,7 @@ let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 2
-let g:airline_theme = "molokai"
+let g:airline_theme = "hybridline"
 
 " ----------------------------------------------------
 " General
