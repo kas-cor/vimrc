@@ -25,6 +25,7 @@ Plugin 'szw/vim-tags'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/tabman.vim'
+Plugin 'dkprice/vim-easygrep'
 
 " Edit
 Plugin 'terryma/vim-multiple-cursors'
@@ -395,11 +396,8 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Find/Replace
-noremap ;; *``:%s///g<Left><Left>
-noremap ;' *``:%s///cg<Left><Left><Left>
-
-" Close the current buffer
-map <leader>bd :Bclose<cr>
+noremap ;; :%s/\<<C-r><C-w>\>//g<Left><Left>
+noremap ;' :%s/\<<C-r><C-w>\>//cg<Left><Left><Left>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
@@ -489,10 +487,6 @@ map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
-
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
 
 " ----------------------------------------------------
 " Spell checking
