@@ -20,7 +20,6 @@ Plugin 'tpope/vim-sensible'
 " Search
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'szw/vim-tags'
 Plugin 'myusuf3/numbers.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/tabman.vim'
@@ -42,8 +41,6 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/context_filetype.vim'
 Plugin 'Shougo/neoinclude.vim'
 Plugin 'Shougo/neco-syntax'
-" Plugin 'Shougo/neosnippet'
-" Plugin 'Shougo/neosnippet-snippets'
 
 " JavaScript
 Plugin 'othree/javascript-libraries-syntax.vim'
@@ -66,10 +63,9 @@ let mapleader = ","
 let g:mapleader = ","
 
 " ------
-" Tags
+" CTags
 " ------
-let g:vim_tags_auto_generate = 1
-let g:vim_tags_ctags_binary = "~/vimfiles/ctags.exe"
+autocmd BufWritePost *.php,*.js,*.py let msg=system("ctags -R") | if msg!="" | echo msg | endif
 
 " ------
 " Nerd Tree
