@@ -42,7 +42,8 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/context_filetype.vim'
 Plugin 'Shougo/neoinclude.vim'
 Plugin 'Shougo/neco-syntax'
-Plugin 'Shougo/neosnippet-snippets'
+" Plugin 'Shougo/neosnippet'
+" Plugin 'Shougo/neosnippet-snippets'
 
 " JavaScript
 Plugin 'othree/javascript-libraries-syntax.vim'
@@ -58,6 +59,11 @@ Plugin 'w0ng/vim-hybrid'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
 
 " ------
 " Tags
@@ -146,7 +152,6 @@ let g:neocomplete#enable_auto_delimiter = 1
 let g:neocomplete#enable_auto_close_preview = 1
 let g:neocomplete#min_keyword_length = 1
 
-
 " ------
 " Syntastic
 " ------
@@ -192,11 +197,6 @@ set secure
 " Copy/paste Ctrl+C/Ctrl+V
 vmap <C-C> "+yi
 imap <C-V> <esc>"+gPi
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -377,6 +377,8 @@ set tw=500
 set ai " Auto indent
 set si " Smart indent
 set nowrap " Wrap lines
+set colorcolumn=80
+set list " Visual symbols
 
 " ----------------------------------------------------
 " Moving around, tabs, windows and buffers
