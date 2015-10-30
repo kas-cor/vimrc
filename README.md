@@ -19,57 +19,57 @@ Leader key `,`
 
 ### NerdTree
 
-Open/close - `,,`
+`,,` - open/close
 
-Path where open file - `Ctrl+\`
+`Ctrl+\` - path where open file
 
 ### Multiple cursors
 
-Add cursor in palace - `Ctrl+s`
+`Ctrl+s` - add cursor in palace
 
 ### CtrlP
 
-Open - `Ctrl+f` or `,j`
+`Ctrl+f` or `,j` - open
 
-Open buffers - `Ctrl+b`
+`Ctrl+b` - open buffers
 
 ### TagBar
 
-Open/close - `F8`
+`F8` - open/close
 
 ### Emmet
 
-Expand - `Ctrl+e`
+`Ctrl+e` expand
 
 ### Misc
 
-Remove the Windows ^M - when the encodings gets messed up - `,m`
+`,m` - remove the Windows ^M - when the encodings gets messed up
 
-Quickly open a buffer for scribble - `,q`
+`,q` - quickly open a buffer for scribble
 
-Quickly open a markdown buffer for scribble - `,x`
+`,x` - quickly open a markdown buffer for scribble
 
-Toggle paste mode on and off - `,pp`
+`,pp` - toggle paste mode on and off
 
-Remap VIM 0 to first non-blank character - `0` ^
+`0` - Remap VIM 0 to first non-blank character
 
-Auto format all doc - `,f`
+`,f` - auto format all doc
 
-Close all the buffers - `,ba`
+`,ba` - close all the buffers
 
-Switch CWD to the directory of the open buffer - `,cd`
+`,cd` - switch CWD to the directory of the open buffer
 
-Disable highlight when <leader><cr> is pressed - `,<Enter>`
+`,<Enter>` - disable highlight
 
-Fast editing and reloading of vimrc configs - `,e`
+`,e` - fast editing and reloading of vimrc configs
 
-Fast saving - `,w`
+`,w` - fast saving
 
 #### Find/Replace
 
-`;;` - Replace word in cursor without confirm
+`;;` - replace word in cursor without confirm
 
-`;'` - Replace word in cursor with confirm
+`;'` - replace word in cursor with confirm
 
 #### Spell checking
 
@@ -77,24 +77,24 @@ Pressing `,ss` will toggle and untoggle spell checking
 
 Shortcuts using `<leader>`
 
-`,sn` ]s
+`,sn` - ]s
 
-`,sp` [s
+`,sp` - [s
 
-`,sa` zg
+`,sa` - zg
 
-`,s?` z=
+`,s?` - z=
 
 #### Allow to copy/paste between VIM instances
 
-copy the current visual selection to ~/.vbuf - `,y`
+`,y` - copy the current visual selection to ~/.vbuf
 
-copy the current line to the buffer file if no visual selection - `,y`
+`,y` - copy the current line to the buffer file if no visual selection
 
-paste the contents of the buffer file - `,p`
+`,p` - paste the contents of the buffer file
 
 #### Copy/paste Ctrl+C/Ctrl+V
 
-`Ctrl+c` - Copy
+`Ctrl+c` - copy
 
-`Ctrl+v` - Paste
+`Ctrl+v` - paste
