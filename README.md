@@ -17,29 +17,29 @@ Open gVim and run command ```:PluginInstall```
 
 Leader key ```,```
 
-# NerdTree
+### NerdTree
 
 Open/close - ```,,```
 Path where open file - ```Ctrl+\```
 
-# Multiple cursors
+### Multiple cursors
 
 Add cursor in palace - ```Ctrl+s```
 
-# CtrlP
+### CtrlP
 
 Open - ```Ctrl+f``` or ```,j```
 Open buffers - ```Ctrl+b```
 
-# TagBar
+### TagBar
 
 Open/close - ```F8```
 
-# Emmet
+### Emmet
 
 Expand - ```Ctrl+e```
 
-# Misc
+### Misc
 
 Remove the Windows ^M - when the encodings gets messed up
 ```,m```
